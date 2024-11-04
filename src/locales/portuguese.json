@@ -1,0 +1,92 @@
+{
+    "login": {
+        "adminPanel": "Painel de administração",
+        "welcomeBack": "Olá, bem-vindo de volta",
+        "enterCredentialsToConti": "Insira suas credenciais para continuar",
+        "signInWithEmailAddress": "Endereço de e-mail/nome de usuário",
+        "emailAddressNUsername": "Email Address / Username",
+        "password": "Senha",
+        "signIn": "Entrar",
+        "emailRequired": "O e-mail é obrigatório",
+        "passwordRequired": "Senha requerida",
+        "emailOrPasswordNotValid": "E-mail ou senha não é válido",
+        "loginSuccess": "Login com sucesso!",
+        "invalidEmail": "Endereço de email invalido"
+    },
+    "menu": {
+        "dashboard":"Painel",
+        "users":"Usuários",
+        "transactions":"Transações",
+        "gameHistory":"História do Jogo",
+        "disputes":"Disputas",
+        "rewards":"Recompensas",
+        "staticPages":"Páginas Estáticas",
+        "settings":"Configurações",
+        "winRate":"Taxa de vitórias",
+        "versions":"Versões",
+        "agents":"Agentes",
+        "lottery":"Loteria",
+        "draw":"Empate",
+        "lotteryTime":"Hora da loteria",
+        "lotteryRooms":"Rooms",
+        "lotteryHistory":"Tickets History",
+    "lotteryReporting":"Lottery Reporting"
+
+
+    
+    },
+    "dashboard":{
+        "totalUsers":"Total de usuários",
+        "totalDisputes":"Disputas totais",
+        "totalGamePlay":"Jogo Total",
+        "totalTransactions": "Total de transações",
+        "totalCreditAmount": "Valor total do crédito",
+        "totalDebitAmount": "Valor total do débito",
+        "totalGrowth":"Crescimento total",
+        "users": "Usuários",
+        "all": "Todos",
+        "thisMonth":"Este mês",
+        "today": "Hoje",
+        "counts":"Conta",
+        "popularGames":"Jogo Popular",
+        "transactionsMethods":"Método de transação",
+        "noGraphFound" : "Não há dados disponíveis para o gráfico."
+
+    },
+    "users":{
+        "allUsers": "Todos os usuários",
+        "rows": "Filas",
+        "search": "Procurar",
+        "username": "Nome de usuário",
+        "email":"E-mail",
+        "mobile": "Móvel",
+        "status": "Status",
+        "actions": "Ações",
+        "addUser": "Adicionar usuário",
+        "mobileNumber":"Número de telemóvel",
+        "password": "Senha",
+        "walletBalance": "Saldo da carteira",
+        "cancel": "Cancelar",
+        "add": "Adicionar",
+        "usernameRequired": "Nome de usuário é requerido.",
+        "mobileNumberRequired": "O número do celular é obrigatório.",
+        "passwordRequired": "Senha requerida",
+        "emailRequired":"E-mail é necessário.",
+        "walletBalanceRequired": "O saldo da carteira é obrigatório."
+    
+      },
+    "transactions":{
+    "transactions":"Transações",
+    "rows": "Filas",
+    "search": "Procurar",
+    "username": "Nome de usuário",
+    "transactionId":"ID da transação",
+    "transactionIType":"Tipo de transação",
+    "operation":"Operação",
+    "spendAmt":"Gastar valor.",
+    "remainBal":"Permanecer Bal.",
+    "createdDt":"Data de criação",
+    "totalRecords":"Registros totais"
+    }
+}
+  

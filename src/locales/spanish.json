@@ -1,0 +1,91 @@
+{
+    "login": {
+        "adminPanel": "Panel de administrador",
+        "welcomeBack": "Hola, bienvenido de nuevo",
+        "enterCredentialsToConti": "Ingrese sus credenciales para continuar",
+        "signInWithEmailAddress": "Iniciar sesión con dirección de correo electrónico",
+        "emailAddressNUsername": "Dirección de correo electrónico/nombre de usuario",
+        "password": "Contraseña",
+        "signIn": "Iniciar sesión",
+        "emailRequired": "Dirección de correo electrónico: (obligatorio",
+        "passwordRequired": "Se requiere contraseña",
+        "emailOrPasswordNotValid": "El correo electrónico o la contraseña no son válidos",
+        "loginSuccess": "¡Inicia sesión exitosamente!",
+        "invalidEmail": "Dirección de correo electrónico no válida"
+    },
+    "menu": {
+        "dashboard":"Panel",
+        "users":"Usuarios",
+        "transactions":"Actas",
+        "gameHistory":"Historia del juego",
+        "disputes":"Disputas",
+        "rewards":"Recompensas",
+        "staticPages":"Páginas estáticas",
+        "settings":"Ajustes",
+        "winRate":"Ratio de victorias",
+        "versions":"Versiones",
+        "agents":"Agentes",
+        "lottery":"Lotería",
+        "draw":"Dibujar",
+        "lotteryTime":"Hora de la lotería",
+        "lotteryRooms":"Rooms",
+        "lotteryHistory":"Tickets History",
+        "lotteryReporting":"Lottery Reporting"
+
+
+      },
+      "dashboard":{
+        "totalUsers":"Usuarios totales",
+        "totalDisputes":"Disputas totales",
+        "totalGamePlay":"Juego total",
+        "totalTransactions": "Transacciones totales",
+        "totalCreditAmount": "Monto total del crédito",
+        "totalDebitAmount": "Importe total del débito",
+        "totalGrowth":"Crecimiento total",
+        "users": "Usuarios",
+        "all": "Todo",
+        "thisMonth":"Este mes",
+        "today": "Hoy",
+        "counts":"Cuenta",
+        "popularGames":"Juego popular",
+        "transactionsMethods":"Método de transacción",
+        "noGraphFound" : "No hay datos disponibles para el gráfico."
+    
+      },
+      "users":{
+        "allUsers": "Todos los usuarios",
+        "rows": "Filas",
+        "search": "Buscar",
+        "username": "Nombre de usuario",
+        "email":"Correo electrónico",
+        "mobile": "Móvil",
+        "status": "Estado",
+        "actions": "Comportamiento",
+        "addUser": "Agregar usuario",
+        "mobileNumber":"Número de teléfono móvil",
+        "password": "Contraseña",
+        "walletBalance": "Saldo de billetera",
+        "cancel": "Cancelar",
+        "add": "Agregar",
+        "usernameRequired": "Se requiere nombre de usuario.",
+        "mobileNumberRequired": "Se requiere número de móvil.",
+        "passwordRequired": "Se requiere contraseña.",
+        "emailRequired":"e requiere correo electrónico.",
+        "walletBalanceRequired": "Se requiere saldo de billetera"
+    
+      },
+      "transactions":{
+        "transactions":"Actas",
+        "rows": "Filas",
+        "search": "Buscar",
+        "username": "Nombre de usuario",
+        "transactionId":"ID de transacción",
+        "transactionIType":"Tipo de transacción",
+        "operation":"Operación",
+        "spendAmt":"Gastar importe.",
+        "remainBal":"Permanecer Bal.",
+        "createdDt":"Fecha de creación",
+        "totalRecords":"Registros totales"
+      }
+    
+}
