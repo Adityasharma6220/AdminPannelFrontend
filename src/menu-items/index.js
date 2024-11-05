@@ -1,6 +1,7 @@
 import dashboard from './dashboard';
 import users from './users';
-// import lottery from './lottery'
+// import lottery from './lottery';
+import game_panel from './game_panel';
 
 
 // ==============================|| MENU ITEMS ||============================== //
@@ -8,6 +9,7 @@ import users from './users';
 const menuItems = {
   items: [
     dashboard, 
+    game_panel,
     // lottery, 
     users
   ]

@@ -1,22 +1,13 @@
-import { useState, useRef, useEffect } from 'react';
+
+import React, { useState, useRef, useEffect } from 'react';
 
 import { useNavigate } from 'react-router-dom';
-import { useSelector,useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 // material-ui
 import { useTheme } from '@mui/material/styles';
 import {
-  Avatar,
-  Box,
-  Chip,
-  ClickAwayListener,
-  List,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Paper,
-  Popper,
-  Stack,
-  Typography
+  Avatar, Box, Chip, ClickAwayListener, List, ListItemButton, ListItemIcon, ListItemText,
+  Paper, Popper, Stack, Typography
 } from '@mui/material';
 
 // third-party
@@ -26,9 +17,16 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 import MainCard from 'ui-component/cards/MainCard';
 import Transitions from 'ui-component/extended/Transitions';
 import { IconLogout, IconSettings } from '@tabler/icons';
-import { BackendURL   } from 'store/constant';
+import { BackendURL } from 'store/constant';
 import axios from 'axios';
 import { addValue } from 'store/actions';
+import { IconHeartHandshake } from '@tabler/icons-react';
+
+import Collapse from '@mui/material/Collapse';
+
+import Person3OutlinedIcon from '@mui/icons-material/Person3Outlined';
+import Person4OutlinedIcon from '@mui/icons-material/Person4Outlined';
+import { IconChevronDown, IconChevronUp } from '@tabler/icons-react';
 
 // ==============================|| PROFILE MENU ||============================== //
 
@@ -78,9 +76,9 @@ const ProfileSection = () => {
   const [userDetails, setUserDetails] = useState({});
   useEffect(() => {
     getUserDetails();
-    
+
   }, []);
-  const getUserDetails = async() => {
+  const getUserDetails = async () => {
     const headers = {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -89,15 +87,15 @@ const ProfileSection = () => {
 
     try {
       let response = await axios.get(`${BackendURL}admin/loggeduser`, { headers: headers });
-      
+
       setUserDetails(response.data.user)
       dispatch(addValue(response.data.user?.role))
-    
+
     } catch (error) {
-       if (error.response && error.response.status === 401) {
+      if (error.response && error.response.status === 401) {
         localStorage.removeItem('token');
         navigate('/login');
-  }
+      }
       console.error('Error fetching user details:', error);
     }
   }
@@ -131,23 +129,23 @@ const ProfileSection = () => {
   function stringToColor(string) {
     let hash = 0;
     let i;
-  
+
     /* eslint-disable no-bitwise */
     for (i = 0; i < string.length; i += 1) {
       hash = string.charCodeAt(i) + ((hash << 5) - hash);
     }
-  
+
     let color = '#';
-  
+
     for (i = 0; i < 3; i += 1) {
       const value = (hash >> (i * 8)) & 0xff;
       color += `00${value.toString(16)}`.slice(-2);
     }
     /* eslint-enable no-bitwise */
-  
+
     return color;
   }
-  
+
   function stringAvatar(name) {
     return {
       sx: {
@@ -156,12 +154,19 @@ const ProfileSection = () => {
       children: `${name.split(' ')[0][0]}${name.split(' ')[1][0]}`,
     };
   }
+
+  const [openPartners, setOpenPartners] = useState(true);
+
+  const handlePartnersClick = () => {
+    setOpenPartners(!openPartners);
+  };
+
   return (
     <>
       <Chip
         sx={{
           height: '48px',
-          border:1, borderColor:'red',
+          border: 1, borderColor: 'red',
           alignItems: 'center',
           borderRadius: '27px',
           transition: 'all .2s ease-in-out',
@@ -233,10 +238,10 @@ const ProfileSection = () => {
                       </Stack>
                       <Typography variant="subtitle2">Project Admin</Typography>
                     </Stack>
-                  
+
                   </Box>
                   <PerfectScrollbar style={{ height: '100%', maxHeight: 'calc(100vh - 250px)', overflowX: 'hidden' }}>
-                    <Box sx={{ p:2 }}>
+                    <Box sx={{ p: 2 }}>
                       <List
                         component="nav"
                         sx={{
@@ -256,7 +261,35 @@ const ProfileSection = () => {
                         <ListItemButton
                           sx={{ borderRadius: `${customization.borderRadius}px` }}
                           selected={selectedIndex === 0}
-                          onClick={(event) => {handleListItemClick(event, 0, '#');settingPage()}}
+                          onClick={handlePartnersClick}
+                        >
+                          <ListItemIcon>
+                            <IconHeartHandshake stroke={1.5} size="1.3rem" />
+                          </ListItemIcon>
+                          <ListItemText primary={<Typography variant="body2">Partners</Typography>} />
+                          {openPartners ? <IconChevronUp /> : <IconChevronDown />}
+                        </ListItemButton>
+                        <Collapse in={openPartners} timeout="auto" unmountOnExit>
+                          <List component="div" disablePadding>
+                            {[{ name: 'Jhon Doe', icon: <Person4OutlinedIcon /> }, { name: 'Alice Sharma', icon: <Person3OutlinedIcon /> }].map((partners, index) => {
+                              return (
+                                <ListItemButton key={index}
+                                  sx={{ pl: 4, borderRadius: `${customization.borderRadius}px` }}
+                                >
+                                  <ListItemIcon>
+                                    {partners.icon}
+                                  </ListItemIcon>
+                                  <ListItemText primary={partners.name} />
+                                </ListItemButton>
+                              )
+                            })}
+                          </List>
+                        </Collapse>
+
+                        <ListItemButton
+                          sx={{ borderRadius: `${customization.borderRadius}px` }}
+                          selected={selectedIndex === 1}
+                          onClick={(event) => { handleListItemClick(event, 1, '#'); settingPage() }}
                         >
                           <ListItemIcon>
                             <IconSettings stroke={1.5} size="1.3rem" />
