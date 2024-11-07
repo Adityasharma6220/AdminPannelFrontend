@@ -1,3 +1,4 @@
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useTheme } from '@mui/material/styles';
@@ -7,8 +8,10 @@ import ProfileSection from './ProfileSection';
 import { useDispatch } from 'react-redux';
 import { changeLanguage } from 'store/actions';
 import i18n from '../../../i18n';
-import axios from 'axios';
 import { IconMenu2 } from '@tabler/icons';
+
+// context 
+import { useGame } from 'context/GameContext';
 
 const languageOptions = [
   { value: 'en', label: 'English' },
@@ -23,6 +26,9 @@ const Header = ({ handleLeftDrawerToggle }) => {
   const [selectedLanguage, setSelectedLanguage] = useState('en');
   const [value, setValue] = useState('default');
   const [data, setData] = useState(null);
+
+  // to control from context 
+  const { selectedGame, setSelectedGame } = useGame();
 
   const handleLanguageChange = (language) => {
     dispatch(changeLanguage(language));
@@ -39,25 +45,25 @@ const Header = ({ handleLeftDrawerToggle }) => {
     setAnchorEl(null);
   };
 
-  const fetchData = async (selection) => {
-    try {
-      const response = await axios.get(`${selection}/data`);
-      setData(response.data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
+  // const fetchData = async (selection) => {
+  //   try {
+  //     const response = await axios.get(`${selection}/data`);
+  //     setData(response.data);
+  //   } catch (error) {
+  //     console.error('Error fetching data:', error);
+  //   }
+  // };
 
   const handleDropdownChange = (event) => {
     const selectedValue = event.target.value;
-    setValue(selectedValue);
+    setSelectedGame(selectedValue);
 
     // Trigger fetch only if a valid database is selected
-    if (selectedValue === 'dice' || selectedValue === 'gamedatabase') {
-      fetchData(selectedValue);
-    } else {
-      setData(null); // Clear data for non-database options
-    }
+    // if (selectedValue === 'dice' || selectedValue === 'gamedatabase') {
+    //   fetchData(selectedValue);
+    // } else {
+    //   setData(null); // Clear data for non-database options
+    // }
   };
 
   return (
@@ -97,7 +103,7 @@ const Header = ({ handleLeftDrawerToggle }) => {
       </Box>
       <Box>
         <div className="flex w-full component-preview p-4 items-center justify-center gap-2 font-sans">
-          <Select value={value} onChange={handleDropdownChange}>
+          <Select value={selectedGame} onChange={handleDropdownChange}>
             <MenuItem value="default" disabled>
               Pick your favorite Simpson
             </MenuItem>

@@ -21,6 +21,9 @@ import TransactionOperations from './TransactionOperation';
 import { gridSpacing, BackendURL, AppName } from 'store/constant';
 // ==============================|| DEFAULT DASHBOARD ||============================== //
 
+// GameContext
+import { useGame } from 'context/GameContext';
+
 const Dashboard = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -28,22 +31,28 @@ const Dashboard = () => {
   const [userDetails, setUserDetails] = useState({});
   const [DebitAmount, SetDebitAmount] = useState(0)
   const [CreditAmount, SetCreditAmount] = useState(0)
-  
+
+  const { selectedGame } = useGame();
+
 
   useEffect(() => {
     document.title = `Dashboard | ${AppName}`
     getUserDetails();
     getTransactionAmount();
-  }, []);
+  }, [selectedGame]);
+
   const getUserDetails = async () => {
     const headers = {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem('token')}`,
     };
 
+    const url = selectedGame === "default"
+      ? `${BackendURL}user/dashboardCounts`
+      : `${BackendURL}${selectedGame}/user/dashboardCounts`;
 
     try {
-      let response = await axios.post(`${BackendURL}user/dashboardCounts`, {}, { headers: headers });
+      let response = await axios.post(url, {}, { headers: headers });
       setUserDetails(response.data.data)
       console.log('userdetails', response.data.data)
       setLoading(false);
@@ -57,6 +66,7 @@ const Dashboard = () => {
       console.error('Error fetching user details:', error);
     }
   }
+
   const getTransactionAmount = async () => {
     const headers = {
       'Content-Type': 'application/json',
@@ -93,7 +103,7 @@ const Dashboard = () => {
       <Grid item xs={12}>
         <Grid container spacing={gridSpacing}>
           <Grid item lg={4} sm={12} xs={12}>
-          {/* Total Users */}
+            {/* Total Users */}
             <EarningCard isLoading={isLoading} counts={userDetails.userCountsTotal} />
           </Grid>
 
@@ -104,7 +114,7 @@ const Dashboard = () => {
           <Grid item lg={4} sm={12} xs={12}>
             <TotalIncomeLightCard isLoading={isLoading} counts={userDetails.transactions} />
           </Grid>
-          
+
         </Grid>
       </Grid>
       <Grid item xs={12}>
