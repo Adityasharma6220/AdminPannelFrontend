@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 
 // project imports
 import App from 'App';
+import { GameProvider } from '../src/context/GameContext';
 import { store } from 'store';
 
 // style + assets
@@ -50,6 +51,8 @@ root.render(
   <QueryClientProvider client={queryClient}>
     <Provider store={store}>
       <BrowserRouter basename={config.basename}>
+      <GameProvider>
+
         <App />
         <ToastContainer
           position="top-right"
@@ -63,6 +66,7 @@ root.render(
           pauseOnHover={false}
           theme="light"
         />
+          </GameProvider>,
       </BrowserRouter>
     </Provider>
   </QueryClientProvider>
